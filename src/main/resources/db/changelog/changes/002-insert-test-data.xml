@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="002-insert-test-data" author="Szymon Wierzchoś" context="dev">
+
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Medyczna"/>
+            <column name="building_number" value="15"/>
+            <column name="city" value="Warszawa"/>
+            <column name="zip_code" value="00-111"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Kliniczna"/>
+            <column name="building_number" value="8"/>
+            <column name="apartment_number" value="2A"/>
+            <column name="city" value="Poznań"/>
+            <column name="zip_code" value="60-003"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Zdrowa"/>
+            <column name="building_number" value="1"/>
+            <column name="city" value="Kraków"/>
+            <column name="zip_code" value="30-002"/>
+            <column name="country" value="Polska"/>
+        </insert>
+
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Wiosenna"/>
+            <column name="building_number" value="7"/>
+            <column name="apartment_number" value="12"/>
+            <column name="city" value="Lublin"/>
+            <column name="zip_code" value="20-222"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Letnia"/>
+            <column name="building_number" value="5"/>
+            <column name="city" value="Gdańsk"/>
+            <column name="zip_code" value="80-005"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Jesienna"/>
+            <column name="building_number" value="44"/>
+            <column name="apartment_number" value="12"/>
+            <column name="city" value="Wrocław"/>
+            <column name="zip_code" value="50-006"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Zimowa"/>
+            <column name="building_number" value="7"/>
+            <column name="apartment_number" value="1"/>
+            <column name="city" value="Szczecin"/>
+            <column name="zip_code" value="70-007"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Polna"/>
+            <column name="building_number" value="100"/>
+            <column name="city" value="Białystok"/>
+            <column name="zip_code" value="15-008"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Leśna"/>
+            <column name="building_number" value="2"/>
+            <column name="apartment_number" value="8"/>
+            <column name="city" value="Katowice"/>
+            <column name="zip_code" value="40-009"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Słoneczna"/>
+            <column name="building_number" value="9"/>
+            <column name="apartment_number" value="15"/>
+            <column name="city" value="Łódź"/>
+            <column name="zip_code" value="90-010"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Kwiatowa"/>
+            <column name="building_number" value="14"/>
+            <column name="city" value="Bydgoszcz"/>
+            <column name="zip_code" value="85-011"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Ogrodowa"/>
+            <column name="building_number" value="3"/>
+            <column name="apartment_number" value="33"/>
+            <column name="city" value="Rzeszów"/>
+            <column name="zip_code" value="35-012"/>
+            <column name="country" value="Polska"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="street" value="Parkowa"/>
+            <column name="building_number" value="22"/>
+            <column name="apartment_number" value="7"/>
+            <column name="city" value="Toruń"/>
+            <column name="zip_code" value="87-013"/>
+            <column name="country" value="Polska"/>
+        </insert>
+
+        <insert tableName="doctors">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="1"/>
+            <column name="first_name" value="Gregory"/>
+            <column name="last_name" value="House"/>
+            <column name="license_number" value="1234567"/>
+            <column name="specialization" value="Diagnostyka"/>
+            <column name="phone_number" value="555-123-456"/>
+            <column name="email" value="house@emr-api.pl"/>
+            <column name="gender" value="MALE"/>
+        </insert>
+        <insert tableName="doctors">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="2"/>
+            <column name="first_name" value="Allison"/>
+            <column name="last_name" value="Cameron"/>
+            <column name="license_number" value="2345678"/>
+            <column name="specialization" value="Immunologia"/>
+            <column name="phone_number" value="555-987-654"/>
+            <column name="email" value="cameron@emr-api.pl"/>
+            <column name="gender" value="FEMALE"/>
+        </insert>
+        <insert tableName="doctors">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="3"/>
+            <column name="first_name" value="James"/>
+            <column name="last_name" value="Wilson"/>
+            <column name="license_number" value="3456789"/>
+            <column name="specialization" value="Onkologia"/>
+            <column name="phone_number" value="555-111-222"/>
+            <column name="email" value="wilson@emr-api.pl"/>
+            <column name="gender" value="MALE"/>
+        </insert>
+
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="4"/>
+            <column name="first_name" value="Anna"/>
+            <column name="last_name" value="Nowak"/>
+            <column name="pesel" value="90051512345"/>
+            <column name="date_of_birth" value="1990-05-15"/>
+            <column name="email" value="anna.nowak@gmail.com"/>
+            <column name="phone_number" value="987-654-321"/>
+            <column name="gender" value="FEMALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="5"/>
+            <column name="first_name" value="Jan"/>
+            <column name="last_name" value="Kowalski"/>
+            <column name="pesel" value="85041212345"/>
+            <column name="date_of_birth" value="1985-04-12"/>
+            <column name="email" value="jan.kowalski@example.com"/>
+            <column name="phone_number" value="123-456-789"/>
+            <column name="gender" value="MALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="6"/>
+            <column name="first_name" value="Michał"/>
+            <column name="last_name" value="Wiśniewski"/>
+            <column name="pesel" value="78112234567"/>
+            <column name="date_of_birth" value="1978-11-22"/>
+            <column name="email" value="m.wisniewski@example.com"/>
+            <column name="phone_number" value="601-202-303"/>
+            <column name="gender" value="MALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="7"/>
+            <column name="first_name" value="Magdalena"/>
+            <column name="last_name" value="Wójcik"/>
+            <column name="pesel" value="92080811122"/>
+            <column name="date_of_birth" value="1992-08-08"/>
+            <column name="email" value="magda.w@example.com"/>
+            <column name="phone_number" value="505-606-707"/>
+            <column name="gender" value="FEMALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="8"/>
+            <column name="first_name" value="Kamil"/>
+            <column name="last_name" value="Kowalczyk"/>
+            <column name="pesel" value="88010122233"/>
+            <column name="date_of_birth" value="1988-01-01"/>
+            <column name="email" value="kamil.k@example.com"/>
+            <column name="phone_number" value="707-808-909"/>
+            <column name="gender" value="MALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="9"/>
+            <column name="first_name" value="Agnieszka"/>
+            <column name="last_name" value="Kamińska"/>
+            <column name="pesel" value="95030344455"/>
+            <column name="date_of_birth" value="1995-03-03"/>
+            <column name="email" value="aga.kaminska@example.com"/>
+            <column name="phone_number" value="808-909-000"/>
+            <column name="gender" value="FEMALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="10"/>
+            <column name="first_name" value="Piotr"/>
+            <column name="last_name" value="Lewandowski"/>
+            <column name="pesel" value="82070755566"/>
+            <column name="date_of_birth" value="1982-07-07"/>
+            <column name="email" value="plewandowski@example.com"/>
+            <column name="phone_number" value="111-222-333"/>
+            <column name="gender" value="MALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="11"/>
+            <column name="first_name" value="Karolina"/>
+            <column name="last_name" value="Zielińska"/>
+            <column name="pesel" value="99090966677"/>
+            <column name="date_of_birth" value="1999-09-09"/>
+            <column name="email" value="k.zielinska@example.com"/>
+            <column name="phone_number" value="444-555-666"/>
+            <column name="gender" value="FEMALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="12"/>
+            <column name="first_name" value="Tomasz"/>
+            <column name="last_name" value="Szymański"/>
+            <column name="pesel" value="75040477788"/>
+            <column name="date_of_birth" value="1975-04-04"/>
+            <column name="email" value="tomek.szymanski@example.com"/>
+            <column name="phone_number" value="777-888-999"/>
+            <column name="gender" value="MALE"/>
+        </insert>
+        <insert tableName="patients">
+            <column name="created_at" value="2026-02-17 10:00:00"/>
+            <column name="address_id" valueNumeric="13"/>
+            <column name="first_name" value="Zofia"/>
+            <column name="last_name" value="Dąbrowska"/>
+            <column name="pesel" value="68020288899"/>
+            <column name="date_of_birth" value="1968-02-02"/>
+            <column name="email" value="zofia.d@example.com"/>
+            <column name="phone_number" value="222-333-444"/>
+            <column name="gender" value="FEMALE"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
