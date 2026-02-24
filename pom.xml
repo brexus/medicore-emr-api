@@ -70,12 +70,7 @@
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>medicalCommonLibrary</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>medicore-common-lib</artifactId>
+            <artifactId>medicore-common-lib-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

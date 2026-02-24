@@ -1,8 +1,9 @@
 package com.example.emr_api.controller;
 
 import com.example.emr_api.service.PatientService;
-import com.example.emr_api.dto.patient.PatientRequestDto;
-import com.example.emr_api.dto.patient.PatientResponseDto;
+
+import com.example.medicoreCommonLib.dto.patient.PatientRequestDto;
+import com.example.medicoreCommonLib.dto.patient.PatientResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

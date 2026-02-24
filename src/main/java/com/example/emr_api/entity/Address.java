@@ -1,7 +1,7 @@
 package com.example.emr_api.entity;
 
-import com.example.medicalCommonLibrary.BaseEntity;
-import com.example.medicalCommonLibrary.constant.ValidationConstants;
+import com.example.medicoreCommonLib.constant.ValidationConstants;
+import com.example.medicoreCommonLib.dto.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;

@@ -1,8 +1,8 @@
 package com.example.emr_api.mapper;
 
-import com.example.emr_api.dto.patient.PatientRequestDto;
-import com.example.emr_api.dto.patient.PatientResponseDto;
 import com.example.emr_api.entity.Patient;
+import com.example.medicoreCommonLib.dto.patient.PatientRequestDto;
+import com.example.medicoreCommonLib.dto.patient.PatientResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
