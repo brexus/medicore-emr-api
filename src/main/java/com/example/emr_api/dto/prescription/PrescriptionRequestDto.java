@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PrescriptionRequestDto {
-    @NotNull(message = "Appointment ID is required")
-    private Long appointmentId;
+    @NotNull(message = "Visit ID is required")
+    private Long visitId;
 
     @NotBlank(message = "Medication name is required")
     @Size(max = ValidationConstants.MEDICATION_NAME_MAX_LENGTH, message = "Medication name must be at most " + ValidationConstants.MEDICATION_NAME_MAX_LENGTH + " characters")

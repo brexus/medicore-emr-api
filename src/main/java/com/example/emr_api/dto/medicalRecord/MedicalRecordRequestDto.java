@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MedicalRecordRequestDto {
-    @NotNull(message = "Appointment ID is required")
-    private Long appointmentId;
+    @NotNull(message = "Visit ID is required")
+    private Long visitId;
 
     private String symptoms;
 

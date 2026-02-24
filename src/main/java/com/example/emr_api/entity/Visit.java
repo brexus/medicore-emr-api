@@ -1,6 +1,6 @@
 package com.example.emr_api.entity;
 
-import com.example.emr_api.enums.AppointmentStatusEnum;
+import com.example.emr_api.enums.VisitStatusEnum;
 import com.example.medicalCommonLibrary.BaseEntity;
 import com.example.medicalCommonLibrary.constant.ValidationConstants;
 import jakarta.persistence.*;
@@ -17,8 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "appointments")
-public class Appointment extends BaseEntity {
+@Table(name = "visit")
+public class Visit extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", referencedColumnName = "id", nullable = false)
     private Patient patient;
@@ -26,16 +26,16 @@ public class Appointment extends BaseEntity {
     @JoinColumn(name = "doctor_id", referencedColumnName = "id", nullable = false)
     private Doctor doctor;
 
-    @Column(name = "appointment_date", nullable = false)
-    private LocalDateTime appointmentDate;
+    @Column(name = "visit_date", nullable = false)
+    private LocalDateTime visitDate;
     @Column(name = "status", nullable = false, length = ValidationConstants.STATUS_MAX_LENGTH)
     @Enumerated(EnumType.STRING)
-    private AppointmentStatusEnum status;
+    private VisitStatusEnum status;
 
-    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "visit", cascade = CascadeType.ALL, orphanRemoval = true)
     private MedicalRecord medicalRecord;
-    @OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Prescription> prescriptionList;
-    @OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LabOrder> labOrderList;
 }

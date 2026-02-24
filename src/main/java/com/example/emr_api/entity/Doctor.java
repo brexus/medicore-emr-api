@@ -39,6 +39,6 @@ public class Doctor extends BaseEntity {
     private GenderEnum gender;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    private List<Appointment> appointments;
+    private List<Visit> visits;
 
 }

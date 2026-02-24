@@ -1,6 +1,6 @@
 package com.example.emr_api.enums;
 
-public enum AppointmentStatusEnum {
+public enum VisitStatusEnum {
     SCHEDULED,
     COMPLETED,
     CANCELLED,

@@ -1,7 +1,6 @@
-package com.example.emr_api.dto.appointment;
+package com.example.emr_api.dto.visit;
 
-import com.example.emr_api.enums.AppointmentStatusEnum;
-import jakarta.validation.constraints.NotBlank;
+import com.example.emr_api.enums.VisitStatusEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,17 +13,17 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AppointmentRequestDto {
+public class VisitRequestDto {
     @NotNull(message = "Patient ID is required")
     private Long patientId;
 
     @NotNull(message = "Doctor ID is required")
     private Long doctorId;
 
-    @NotNull(message = "Appointment date is required")
-    private LocalDateTime appointmentDate;
+    @NotNull(message = "Visit date is required")
+    private LocalDateTime visitDate;
 
     @NotNull(message = "Status is required")
-    private AppointmentStatusEnum status;
+    private VisitStatusEnum status;
 
 }
