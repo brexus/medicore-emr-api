@@ -1,10 +1,11 @@
 package com.example.emr_api.service;
 
-import com.example.emr_api.dto.patient.PatientRequestDto;
-import com.example.emr_api.dto.patient.PatientResponseDto;
+
 import com.example.emr_api.entity.Patient;
 import com.example.emr_api.mapper.PatientMapper;
 import com.example.emr_api.repository.PatientRepository;
+import com.example.medicoreCommonLib.dto.patient.PatientRequestDto;
+import com.example.medicoreCommonLib.dto.patient.PatientResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

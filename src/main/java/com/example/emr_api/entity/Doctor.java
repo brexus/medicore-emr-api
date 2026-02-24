@@ -1,8 +1,8 @@
 package com.example.emr_api.entity;
 
-import com.example.emr_api.enums.GenderEnum;
-import com.example.medicalCommonLibrary.BaseEntity;
-import com.example.medicalCommonLibrary.constant.ValidationConstants;
+import com.example.medicoreCommonLib.constant.ValidationConstants;
+import com.example.medicoreCommonLib.dto.BaseEntity;
+import com.example.medicoreCommonLib.enums.GenderEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

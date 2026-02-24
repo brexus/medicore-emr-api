@@ -1,6 +1,6 @@
 package com.example.emr_api.entity;
 
-import com.example.medicalCommonLibrary.BaseEntity;
+import com.example.medicoreCommonLib.dto.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
