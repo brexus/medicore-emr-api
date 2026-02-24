@@ -90,7 +90,7 @@
             </column>
         </createTable>
 
-        <createTable tableName="appointments">
+        <createTable tableName="visit">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -100,12 +100,12 @@
             <column name="updated_at" type="DATETIME"/>
 
             <column name="patient_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_appointment_patient" references="patients(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_visit_patient" references="patients(id)"/>
             </column>
             <column name="doctor_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_appointment_doctor" references="doctors(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_visit_doctor" references="doctors(id)"/>
             </column>
-            <column name="appointment_date" type="DATETIME">
+            <column name="visit_date" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
             <column name="status"  type="VARCHAR(20)">
@@ -122,9 +122,9 @@
             </column>
             <column name="updated_at" type="DATETIME"/>
 
-            <column name="appointment_id" type="BIGINT">
-                <constraints unique="true" nullable="false" foreignKeyName="fk_medical_record_appointment"
-                             references="appointments(id)"/>
+            <column name="visit_id" type="BIGINT">
+                <constraints unique="true" nullable="false" foreignKeyName="fk_medical_record_visit"
+                             references="visit(id)"/>
             </column>
             <column name="symptoms" type="TEXT"/>
             <column name="physical_examination" type="TEXT"/>
@@ -141,9 +141,9 @@
             </column>
             <column name="updated_at" type="DATETIME"/>
 
-            <column name="appointment_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_prescription_appointment"
-                             references="appointments(id)"/>
+            <column name="visit_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_prescription_visit"
+                             references="visit(id)"/>
             </column>
             <column name="medication_name" type="VARCHAR(150)">
                 <constraints nullable="false"/>
@@ -172,9 +172,9 @@
             </column>
             <column name="updated_at" type="DATETIME"/>
 
-            <column name="appointment_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_lab_order_appointment"
-                             references="appointments(id)"/>
+            <column name="visit_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_lab_order_visit"
+                             references="visit(id)"/>
             </column>
             <column name="test_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>

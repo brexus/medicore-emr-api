@@ -17,8 +17,8 @@ import lombok.Setter;
 @Table(name = "prescriptions")
 public class Prescription extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "appointment_id", nullable = false)
-    private Appointment appointment;
+    @JoinColumn(name = "visit_id", nullable = false)
+    private Visit visit;
 
     @Column(name = "medication_name", nullable = false, length = ValidationConstants.MEDICATION_NAME_MAX_LENGTH)
     private String medicationName;

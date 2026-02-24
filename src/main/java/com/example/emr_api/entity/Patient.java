@@ -41,7 +41,7 @@ public class Patient extends BaseEntity {
     private GenderEnum gender;
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Appointment> appointments;
+    private List<Visit> visits;
 
     @Transient
     public Integer getAge() {

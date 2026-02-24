@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LabOrderRequestDto {
-    @NotNull(message = "Appointment ID is required")
-    private Long appointmentId;
+    @NotNull(message = "Visit ID is required")
+    private Long visitId;
 
     @NotBlank(message = "Test name is required")
     @Size(max = ValidationConstants.TEST_NAME_MAX_LENGTH, message = "Test name must be at most " + ValidationConstants.TEST_NAME_MAX_LENGTH + " characters")

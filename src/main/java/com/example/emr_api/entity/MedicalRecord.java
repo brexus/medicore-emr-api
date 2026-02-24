@@ -15,8 +15,8 @@ import lombok.Setter;
 @Table(name = "medical_records")
 public class MedicalRecord extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "appointment_id", nullable = false)
-    private Appointment appointment;
+    @JoinColumn(name = "visit_id", nullable = false)
+    private Visit visit;
 
     @Column(name = "symptoms", columnDefinition = "TEXT")
     private String symptoms;
