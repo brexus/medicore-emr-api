@@ -4,38 +4,44 @@ import com.example.medicoreCommonLib.constant.ValidationConstants;
 import com.example.medicoreCommonLib.dto.BaseEntity;
 import com.example.medicoreCommonLib.enums.VisitStatusEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "visit")
-public class Visit extends BaseEntity {
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id", referencedColumnName = "id", nullable = false)
-    private Patient patient;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doctor_id", referencedColumnName = "id", nullable = false)
-    private Doctor doctor;
-
+public class VisitEntity extends BaseEntity {
     @Column(name = "visit_date", nullable = false)
     private LocalDateTime visitDate;
+
     @Column(name = "status", nullable = false, length = ValidationConstants.STATUS_MAX_LENGTH)
     @Enumerated(EnumType.STRING)
     private VisitStatusEnum status;
 
-    @OneToOne(mappedBy = "visit", cascade = CascadeType.ALL, orphanRemoval = true)
-    private MedicalRecord medicalRecord;
+    @Column(name = "reason")
+    private String reason;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patient_id", referencedColumnName = "id", nullable = false)
+    private PatientEntity patient;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id", nullable = false)
+    private DoctorEntity doctor;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "medical_record_id", referencedColumnName = "id")
+    private MedicalRecordEntity medicalRecord;
+
     @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Prescription> prescriptionList;
+    private List<PrescriptionEntity> prescriptionList;
+
     @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<LabOrder> labOrderList;
+    private List<LabOrderEntity> labOrderList;
 }

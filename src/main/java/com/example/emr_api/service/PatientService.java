@@ -1,44 +1,24 @@
 package com.example.emr_api.service;
 
 
-import com.example.emr_api.entity.Patient;
-import com.example.emr_api.mapper.PatientMapper;
-import com.example.emr_api.repository.PatientRepository;
+import com.example.medicoreCommonLib.dto.patient.PatientDetailsDto;
 import com.example.medicoreCommonLib.dto.patient.PatientRequestDto;
 import com.example.medicoreCommonLib.dto.patient.PatientResponseDto;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Service
-@AllArgsConstructor
-public class PatientService {
+public interface PatientService {
+    PatientResponseDto createPatient(PatientRequestDto reqDto);
 
-    private final PatientRepository patientRepository;
-    private final PatientMapper patientMapper;
+    List<PatientResponseDto> getAllPatients();
 
-    public PatientResponseDto createPatient(PatientRequestDto reqDto) {
-        Patient patient = patientMapper.toEntity(reqDto);
-        Patient savedPatient = patientRepository.save(patient);
-        return patientMapper.toDto(savedPatient);
-    }
+    PatientResponseDto getPatientById(Long id);
 
-    public List<PatientResponseDto> getAllPatients() {
-        List<Patient> savedPatient = patientRepository.findAll();
-        return patientMapper.toDtoList(savedPatient);
-    }
+    PatientDetailsDto getPatientDetailsById(Long id);
 
-    public PatientResponseDto getPatient(Long id) {
-        Patient patient = patientRepository.findById(id).orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
-        return patientMapper.toDto(patient);
-    }
+    Map<String, String> deletePatient(Long id);
 
-    public Map<String, String> deletePatient(Long id) {
-        Patient patient = patientRepository.findById(id).orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
-        patientRepository.delete(patient);
-        return Map.of("message", "Patient deleted successfully");
-    }
+    PatientResponseDto getPatientByPesel(String pesel);
 
 }

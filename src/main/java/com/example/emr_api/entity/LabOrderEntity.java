@@ -15,18 +15,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "lab_orders")
-public class LabOrder extends BaseEntity {
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "visit_id", nullable = false)
-    private Visit visit;
-
+public class LabOrderEntity extends BaseEntity {
     @Column(name = "test_name", nullable = false, length = ValidationConstants.TEST_NAME_MAX_LENGTH)
     private String testName;
+
     @Column(name = "status", nullable = false, length = ValidationConstants.STATUS_MAX_LENGTH)
     @Enumerated(EnumType.STRING)
     private LabOrderStatusEnum status;
+
     @Column(name = "access_code", nullable = false, length = ValidationConstants.ACCESS_CODE_MAX_LENGTH)
     private String accessCode;
+
     @Column(name = "result_pdf_url", nullable = true, length = ValidationConstants.RESULT_PDF_URL_MAX_LENGTH)
     private String resultPdfUrl;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "visit_id", nullable = false)
+    private VisitEntity visit;
 }

@@ -90,6 +90,20 @@
             </column>
         </createTable>
 
+        <createTable tableName="medical_records">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="symptoms" type="TEXT"/>
+            <column name="physical_examination" type="TEXT"/>
+            <column name="diagnosis" type="TEXT"/>
+            <column name="recommendations" type="TEXT"/>
+        </createTable>
+
         <createTable tableName="visit">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -111,25 +125,12 @@
             <column name="status"  type="VARCHAR(20)">
                 <constraints nullable="false"/>
             </column>
-        </createTable>
-
-        <createTable tableName="medical_records">
-            <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="reason"  type="VARCHAR(255)">
+                <constraints nullable="true"/>
             </column>
-            <column name="created_at" type="DATETIME">
-                <constraints nullable="false"/>
+            <column name="medical_record_id" type="BIGINT">
+                    <constraints unique="true" foreignKeyName="fk_visit_medical_record" references="medical_records(id)"/>
             </column>
-            <column name="updated_at" type="DATETIME"/>
-
-            <column name="visit_id" type="BIGINT">
-                <constraints unique="true" nullable="false" foreignKeyName="fk_medical_record_visit"
-                             references="visit(id)"/>
-            </column>
-            <column name="symptoms" type="TEXT"/>
-            <column name="physical_examination" type="TEXT"/>
-            <column name="diagnosis" type="TEXT"/>
-            <column name="recommendations" type="TEXT"/>
         </createTable>
 
         <createTable tableName="prescriptions">
