@@ -19,29 +19,36 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "patients")
-public class Patient extends BaseEntity {
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address address;
-
+public class PatientEntity extends BaseEntity {
     @Column(name = "first_name", nullable = false, length = ValidationConstants.FIRST_NAME_MAX_LENGTH)
     private String firstName;
+
     @Column(name = "last_name", nullable = false, length = ValidationConstants.LAST_NAME_MAX_LENGTH)
     private String lastName;
+
     @Column(name = "pesel", nullable = false, unique = true, length = ValidationConstants.PESEL_LENGTH)
     private String pesel;
+
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+
     @Column(name = "email", length = ValidationConstants.EMAIL_MAX_LENGTH)
     private String email;
+
     @Column(name = "phone_number", length = ValidationConstants.PHONE_NUMBER_MAX_LENGTH)
     private String phoneNumber;
+
     @Column(name = "gender", length = ValidationConstants.GENDER_MAX_LENGTH)
     @Enumerated(EnumType.STRING)
     private GenderEnum gender;
 
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private AddressEntity address;
+
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Visit> visits;
+    private List<VisitEntity> visits;
 
     @Transient
     public Integer getAge() {

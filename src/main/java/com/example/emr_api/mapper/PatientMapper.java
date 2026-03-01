@@ -1,6 +1,6 @@
 package com.example.emr_api.mapper;
 
-import com.example.emr_api.entity.Patient;
+import com.example.emr_api.entity.PatientEntity;
 import com.example.medicoreCommonLib.dto.patient.PatientRequestDto;
 import com.example.medicoreCommonLib.dto.patient.PatientResponseDto;
 import org.mapstruct.Mapper;
@@ -13,9 +13,9 @@ public interface PatientMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
-    Patient toEntity(PatientRequestDto reqDto);
+    PatientEntity toEntity(PatientRequestDto reqDto);
 
-    PatientResponseDto toDto(Patient customer);
+    PatientResponseDto toDto(PatientEntity customer);
 
-    List<PatientResponseDto> toDtoList(List<Patient> patients);
+    List<PatientResponseDto> toDtoList(List<PatientEntity> patientEntities);
 }
