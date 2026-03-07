@@ -28,14 +28,14 @@ Before running the application, ensure you have **Java 21+** installed and a run
 
 **1. Clone the repository**
 ```bash
-git clone [https://github.com/your-profile/medicore-emr-api.git](https://github.com/your-profile/medicore-emr-api.git)
+git clone https://github.com/your-profile/medicore-emr-api
 cd medicore-emr-api
 ```
 
 ---
 
 ## Configure the database
-Create an empty database in PostgreSQL (e.g., emr_db). Then, update your src/main/resources/application.properties with your credentials:
+Create an empty database in PostgreSQL (e.g., `emr_db`). Then, update your `src/main/resources/application.properties` with your credentials:
 
 ```bash
 spring.datasource.url=jdbc:postgresql://localhost:5432/emr_db
@@ -52,7 +52,7 @@ You need to clone and install the [medicore-common-lib-api](https://github.com/b
 cd ..
 
 # Clone the shared library
-git clone [https://github.com/brexus/medicore-common-lib-api](https://github.com/brexus/medicore-common-lib-api)
+git clone https://github.com/brexus/medicore-common-lib-api
 
 # Navigate into the library folder and install it
 cd medicore-common-lib-api
