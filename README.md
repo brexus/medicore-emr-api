@@ -1,6 +1,7 @@
 # 🏥 MediCore EMR - API
 This project serves as the central nervous system of the MediCore healthcare platform. Built from the ground up with high scalability in mind, it currently provides the robust core infrastructure for daily clinic management and patient data operations.
 As the platform evolves into a distributed **microservices ecosystem**, this EMR API will act as the foundational hub, seamlessly integrating with upcoming independent modules such as **LIS** (Laboratory Information System) and **PIMS** (Pharmacy Information Management System).
+
 ---
 
 ## 🚀 Core Domain Features
