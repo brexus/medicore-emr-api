@@ -5,6 +5,6 @@ import com.example.medicoreCommonLib.dto.doctor.DoctorResponseDto;
 import java.util.List;
 
 public interface DoctorService {
-    List<DoctorResponseDto> serachDoctor(String query);
+    List<DoctorResponseDto> searchDoctor(String query);
 
 }

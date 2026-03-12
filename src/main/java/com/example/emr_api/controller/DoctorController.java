@@ -24,7 +24,7 @@ public class DoctorController {
 
     @GetMapping("/search")
     public ResponseEntity<List<DoctorResponseDto>> searchDoctor(@RequestParam("query") String query) {
-        List<DoctorResponseDto> doctorsRes = doctorService.serachDoctor(query);
+        List<DoctorResponseDto> doctorsRes = doctorService.searchDoctor(query);
         return ResponseEntity.status(HttpStatus.OK).body(doctorsRes);
     }
 
