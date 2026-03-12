@@ -17,7 +17,7 @@ public class DoctorServiceImpl implements DoctorService {
     private final DoctorMapper doctorMapper;
 
     @Override
-    public List<DoctorResponseDto> serachDoctor(String query) {
+    public List<DoctorResponseDto> searchDoctor(String query) {
         List<DoctorEntity> doctorsEntities = doctorRepository.searchDoctorsByFirstNameAndLastName(query);
 
         return doctorMapper.toDtoList(doctorsEntities);
