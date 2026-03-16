@@ -18,6 +18,9 @@ As the platform evolves into a distributed **microservices ecosystem**, this EMR
 <a href="https://hibernate.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/hibernate/hibernate-original.svg" alt="hibernate" width="40" height="40"/> </a>
 <a href="https://www.liquibase.com/" target="_blank" rel="noreferrer"> <img src="https://dashboard.snapcraft.io/site_media/appmedia/2020/08/liquibase.jpeg.png" alt="liquibase" width="40" height="40"/> </a>
 
+## 🗃️ Database ERD Diagram
+![drawSQL-image-export-2026-03-16](https://github.com/user-attachments/assets/3e22da73-9d18-4088-9ad1-cf287bd6bbab)
+
 
 ## 🛠️ Local Setup (Installation)
 
@@ -29,7 +32,7 @@ git clone https://github.com/your-profile/medicore-emr-api
 cd medicore-emr-api
 ```
 
-### 🗄️Configure the database
+### 2. Configure the database
 Create an empty database in PostgreSQL (e.g., `emr_db`). Then, update your `src/main/resources/application.properties` with your credentials:
 
 ```bash
@@ -38,7 +41,7 @@ spring.datasource.username=postgres
 spring.datasource.password=your_password
 ```
 
-### 🧩 Build the Shared Library
+### 3. Build the Shared Library
 You need to clone and install the [medicore-common-lib-api](https://github.com/brexus/medicore-common-lib-api) repository into your local Maven workspace before building the main project:
 ```bash
 # Navigate out of the current project directory
@@ -55,6 +58,6 @@ mvn clean install
 cd ../medicore-emr-api
 ```
 
-### ▶️ Run the application
+### 4. Run the application
 Spring Boot will automatically trigger Liquibase to create tables and inject initial data.
 
