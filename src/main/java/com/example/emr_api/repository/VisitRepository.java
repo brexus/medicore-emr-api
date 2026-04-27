@@ -12,8 +12,7 @@ import java.util.List;
 
 @Repository
 public interface VisitRepository extends JpaRepository<VisitEntity, Long> {
-    @EntityGraph(attributePaths = {"patient", "patient.address"})
-    List<VisitEntity> findAllByVisitDateBetweenOrderByVisitDateAsc(LocalDateTime startOfDay, LocalDateTime endOfDay);
+    List<VisitEntity> findByDoctorKeycloakIdAndVisitDateBetweenOrderByVisitDateAsc(String doctorKeycloakId, LocalDateTime startOfDay, LocalDateTime endOfDay);
 
     @Query("SELECT v FROM VisitEntity v JOIN FETCH v.doctor d WHERE v.patient.id = :patientId")
     List<VisitEntity> findVisitsWithDoctorByPatientId(@Param("patientId") Long patientId);

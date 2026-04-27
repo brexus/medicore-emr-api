@@ -121,6 +121,7 @@
         </insert>
 
         <insert tableName="doctors">
+            <column name="keycloak_id" value="0502c1aa-5af4-4cc1-b0fe-67a7574b1216"/>
             <column name="created_at" value="2026-02-17 10:00:00"/>
             <column name="address_id" valueNumeric="1"/>
             <column name="first_name" value="Gregory"/>
@@ -132,6 +133,7 @@
             <column name="gender" value="MALE"/>
         </insert>
         <insert tableName="doctors">
+            <column name="keycloak_id" value="9d84dcb9-8607-4716-9f87-86ebb830c9a9"/>
             <column name="created_at" value="2026-02-17 10:00:00"/>
             <column name="address_id" valueNumeric="2"/>
             <column name="first_name" value="Allison"/>

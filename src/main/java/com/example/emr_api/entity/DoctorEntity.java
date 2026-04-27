@@ -18,6 +18,10 @@ import java.util.List;
 @Entity
 @Table(name = "doctors")
 public class DoctorEntity extends BaseEntity {
+
+    @Column(name = "keycloak_id", unique = true)
+    private String keycloakId;
+
     @Column(name = "first_name", nullable = false, length = ValidationConstants.FIRST_NAME_MAX_LENGTH)
     private String firstName;
 
@@ -35,7 +39,6 @@ public class DoctorEntity extends BaseEntity {
 
     @Column(name = "email", length = ValidationConstants.EMAIL_MAX_LENGTH)
     private String email;
-
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
