@@ -18,13 +18,14 @@ import com.example.medicoreCommonLib.dto.visit.VisitResponseDto;
 import com.example.medicoreCommonLib.enums.VisitStatusEnum;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
-import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -37,29 +38,38 @@ public class VisitServiceImpl implements VisitService {
     private final DoctorRepository doctorRepository;
 
     @Override
-    public List<VisitBasicResponseDto> getTodayVisits() {
+    public Page<VisitBasicResponseDto> getTodayVisits(String doctorKeycloakId, int page, int size) {
         LocalDate today = LocalDate.now();
         LocalDateTime startOfDay = today.atStartOfDay();
         LocalDateTime endOfDay = today.atTime(LocalTime.MAX);
-        List<VisitEntity> visitList = visitRepository.findAllByVisitDateBetweenOrderByVisitDateAsc(startOfDay, endOfDay);
-        return visitMapper.toBasicDtoList(visitList);
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<VisitEntity> visitPage = visitRepository.findByDoctorKeycloakIdAndVisitDateBetweenOrderByVisitDateAsc(doctorKeycloakId, startOfDay, endOfDay, pageable);
+
+        return visitPage.map(visitMapper::toBasicDto);
     }
 
     @Override
-    public VisitResponseDto getVisitById(Long id) {
-        VisitEntity visit = visitRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Visit not found with id: " + id));
-        return visitMapper.toDto(visit);
+    public VisitResponseDto getVisitByIdForDoctorId(Long visitId, String doctorKeycloakId) {
+        VisitEntity visit = visitRepository.findById(visitId)
+                .orElseThrow(() -> new RuntimeException("Visit not found with id: " + visitId));
+
+        if (visit.getDoctor().getKeycloakId().equals(doctorKeycloakId)) {
+            return visitMapper.toDto(visit);
+        }
+        throw new RuntimeException("You are not authorized to access this visit");
     }
 
     @Override
-    public VisitResponseDto createVisit(VisitRequestDto reqDto) {
+    public VisitResponseDto createVisit(VisitRequestDto reqDto, String doctorKeycloakId) {
         VisitEntity visit = visitMapper.toEntity(reqDto);
+
         PatientEntity patient = patientRepository.findById(reqDto.getPatientId()).orElseThrow(() -> new RuntimeException("Patient not found with id: " + reqDto.getPatientId()));
         visit.setPatient(patient);
-        DoctorEntity doctor = doctorRepository.findById(reqDto.getDoctorId()).orElseThrow(() -> new RuntimeException("Doctor not found with id: " + reqDto.getDoctorId()));
+
+        DoctorEntity doctor = doctorRepository.findByKeycloakId(doctorKeycloakId).orElseThrow(() -> new RuntimeException("Doctor not found with id: " + doctorKeycloakId));
         visit.setDoctor(doctor);
-        
+
         VisitEntity savedVisit = visitRepository.save(visit);
         return visitMapper.toDto(savedVisit);
     }

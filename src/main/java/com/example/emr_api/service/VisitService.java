@@ -6,16 +6,14 @@ import com.example.medicoreCommonLib.dto.visit.VisitBasicResponseDto;
 import com.example.medicoreCommonLib.dto.visit.VisitRequestDto;
 import com.example.medicoreCommonLib.dto.visit.VisitResponseDto;
 import com.example.medicoreCommonLib.enums.VisitStatusEnum;
-
-import java.util.List;
-import java.util.Map;
+import org.springframework.data.domain.Page;
 
 public interface VisitService {
-    List<VisitBasicResponseDto> getTodayVisits();
+    Page<VisitBasicResponseDto> getTodayVisits(String doctorKeycloakId, int page, int size);
 
-    VisitResponseDto getVisitById(Long id);
+    VisitResponseDto getVisitByIdForDoctorId(Long visitId, String doctorKeycloakId);
 
-    VisitResponseDto createVisit(VisitRequestDto reqDto);
+    VisitResponseDto createVisit(VisitRequestDto reqDto, String doctorKeycloakId);
 
     MedicalRecordResponseDto upsertMedicalRecord(MedicalRecordRequestDto reqDto);
 

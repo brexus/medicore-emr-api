@@ -12,6 +12,9 @@ import com.example.medicoreCommonLib.dto.patient.PatientRequestDto;
 import com.example.medicoreCommonLib.dto.patient.PatientResponseDto;
 import com.example.medicoreCommonLib.dto.visit.VisitShortSummaryDto;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,9 +36,10 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<PatientResponseDto> getAllPatients() {
-        List<PatientEntity> savedPatient = patientRepository.findAll();
-        return patientMapper.toDtoList(savedPatient);
+    public Page<PatientResponseDto> getAllPatients(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<PatientEntity> patientEntities = patientRepository.findAll(pageable);
+        return patientEntities.map(patientMapper::toDto);
     }
 
     @Override
@@ -67,7 +71,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public PatientResponseDto getPatientByPesel(String pesel) {
         PatientEntity patient = patientRepository.findByPesel(pesel);
-        if(patient != null) return patientMapper.toDto(patient);
+        if (patient != null) return patientMapper.toDto(patient);
         throw new RuntimeException("PatientEntity not found with pesel: " + pesel);
     }
 
