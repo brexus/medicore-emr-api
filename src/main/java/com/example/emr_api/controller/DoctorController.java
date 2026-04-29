@@ -1,9 +1,7 @@
 package com.example.emr_api.controller;
 
-import com.example.emr_api.entity.DoctorEntity;
 import com.example.emr_api.service.DoctorService;
 import com.example.medicoreCommonLib.dto.doctor.DoctorResponseDto;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +18,6 @@ import java.util.List;
 public class DoctorController {
 
     private final DoctorService doctorService;
-
 
     @GetMapping("/search")
     public ResponseEntity<List<DoctorResponseDto>> searchDoctor(@RequestParam("query") String query) {

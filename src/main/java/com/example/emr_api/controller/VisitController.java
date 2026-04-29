@@ -9,11 +9,13 @@ import com.example.medicoreCommonLib.dto.visit.VisitResponseDto;
 import com.example.medicoreCommonLib.enums.VisitStatusEnum;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/visit")
@@ -22,21 +24,25 @@ public class VisitController {
     private final VisitService visitService;
 
     @GetMapping("/today")
-    public ResponseEntity<List<VisitBasicResponseDto>> getTodayVisits() {
-        List<VisitBasicResponseDto> resDtosList = visitService.getTodayVisits();
-        return ResponseEntity.status(HttpStatus.OK).body(resDtosList);
+    public ResponseEntity<Page<VisitBasicResponseDto>> getTodayVisits(
+            @AuthenticationPrincipal Jwt jwt,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Page<VisitBasicResponseDto> resPage = visitService.getTodayVisits(jwt.getSubject(), page, size);
+        return ResponseEntity.status(HttpStatus.OK).body(resPage);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VisitResponseDto> getVisitById(@PathVariable Long id) {
-        VisitResponseDto resDto = visitService.getVisitById(id);
+    public ResponseEntity<VisitResponseDto> getVisitById(@PathVariable Long id, @AuthenticationPrincipal Jwt jwt) {
+        VisitResponseDto resDto = visitService.getVisitByIdForDoctorId(id, jwt.getSubject());
         return ResponseEntity.status(HttpStatus.OK).body(resDto);
     }
 
-
+    @PreAuthorize("hasRole('DOCTOR')")
     @PostMapping
-    public ResponseEntity<VisitResponseDto> createVisit(@Valid @RequestBody VisitRequestDto reqDto) {
-        VisitResponseDto resDto = visitService.createVisit(reqDto);
+    public ResponseEntity<VisitResponseDto> createVisit(@Valid @RequestBody VisitRequestDto reqDto, @AuthenticationPrincipal Jwt jwt) {
+        VisitResponseDto resDto = visitService.createVisit(reqDto, jwt.getSubject());
         return ResponseEntity.status(HttpStatus.OK).body(resDto);
     }
 

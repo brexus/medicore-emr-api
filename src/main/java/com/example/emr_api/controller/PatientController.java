@@ -6,11 +6,11 @@ import com.example.medicoreCommonLib.dto.patient.PatientRequestDto;
 import com.example.medicoreCommonLib.dto.patient.PatientResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,8 +27,11 @@ public class PatientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PatientResponseDto>> getAllPatients() {
-        List<PatientResponseDto> resDto = patientService.getAllPatients();
+    public ResponseEntity<Page<PatientResponseDto>> getAllPatients(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Page<PatientResponseDto> resDto = patientService.getAllPatients(page, size);
         return ResponseEntity.status(HttpStatus.OK).body(resDto);
     }
 

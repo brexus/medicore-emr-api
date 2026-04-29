@@ -1,7 +1,8 @@
 package com.example.emr_api.repository;
 
 import com.example.emr_api.entity.VisitEntity;
-import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +14,8 @@ import java.util.List;
 @Repository
 public interface VisitRepository extends JpaRepository<VisitEntity, Long> {
     List<VisitEntity> findByDoctorKeycloakIdAndVisitDateBetweenOrderByVisitDateAsc(String doctorKeycloakId, LocalDateTime startOfDay, LocalDateTime endOfDay);
+
+    Page<VisitEntity> findByDoctorKeycloakIdAndVisitDateBetweenOrderByVisitDateAsc(String doctorKeycloakId, LocalDateTime startOfDay, LocalDateTime endOfDay, Pageable pageable);
 
     @Query("SELECT v FROM VisitEntity v JOIN FETCH v.doctor d WHERE v.patient.id = :patientId")
     List<VisitEntity> findVisitsWithDoctorByPatientId(@Param("patientId") Long patientId);
